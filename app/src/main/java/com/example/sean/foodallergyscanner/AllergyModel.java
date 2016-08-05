@@ -15,11 +15,11 @@ public class AllergyModel {
     public String getName(){
         return name;
     }
-    public void setChecked(){
+    public boolean isChecked(){
         if(checkedValue == 0)
-            checkedValue = 1;
+            return false;
         else
-            checkedValue = 0;
+            return true;
     }
-    
+
 }
