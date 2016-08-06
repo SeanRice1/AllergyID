@@ -17,8 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditAllergies" />
-        <activity android:name=".Scanner" />
+        <activity android:name=".EditAllergies">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.sean.foodallergyscanner.MainActivity" />
+        </activity>
+        <activity android:name=".Scanner">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sean.foodallergyscanner.MainActivity" />
+        </activity>
         <activity android:name=".Result"></activity>
     </application>
 

@@ -33,6 +33,8 @@ public class CustomAdapter extends ArrayAdapter<AllergyModel>{
         checkBox.setText(resource[position].getName());
         checkBox.setChecked(resource[position].isChecked());
 
+        //When a checkbox is clicked sharedPreferences and
+        //AllergyData values array and specific Allergy object
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

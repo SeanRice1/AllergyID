@@ -4,6 +4,7 @@ package com.example.sean.foodallergyscanner;
 public class AllergyModel {
 
     private String name;
+
     // 0 = not checked, 1 = checked
     private int checkedValue;
 

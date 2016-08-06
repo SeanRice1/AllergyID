@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         AllergyData.createArr(this);
 
+        FoodInfo foodInfo = new FoodInfo();
+        foodInfo.getFoodInfo();
         //temporary for AllergySettings creation
         Button editAllergies = (Button) findViewById(R.id.editAllergiesBut);
         editAllergies.setOnClickListener(new View.OnClickListener() {
@@ -28,5 +30,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //temporary for AllergySettings creation
+        Button scanner = (Button) findViewById(R.id.scanButton);
+        scanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Scanner.class);
+                startActivity(intent);
+            }
+        });
     }
 }

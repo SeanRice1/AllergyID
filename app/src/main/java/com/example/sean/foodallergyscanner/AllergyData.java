@@ -29,18 +29,21 @@ public class AllergyData {
             allergyArr[x] = new AllergyModel(names[x], values[x]);
 
     }
+
+    /**
+     * Create an Allergy array with the info stored
+     * in SharedPreferences/ default info
+     */
     public static void createAllergyArray(){
         for(int x = 0; x<names.length;x++){
             allergyArr[x]= new AllergyModel(names[x],values[x]);
         }
     }
     public static void sharedPreferencesSetUp() {
-
          sharedPreferences = context.getSharedPreferences("com.example.sean.FoodAllergyScanner.AllergyData", Context.MODE_PRIVATE);
 
         //If shared preferences is empty, set default values
         if (!sharedPreferences.contains("Cereals")) {
-
             for (int x = 0; x < 15; x++) {
                 sharedPreferences.edit().putString(names[x], "0").commit();
                 values[x]=0;
@@ -53,8 +56,8 @@ public class AllergyData {
 
         }
     }
+
     public static void sharedPreferencesUpdater(int position){
-        
         if(values[position]==0) {
             values[position] = 1;
             sharedPreferences.edit().putString(names[position],"1").commit();
@@ -63,8 +66,6 @@ public class AllergyData {
             values[position] = 0;
             sharedPreferences.edit().putString(names[position],"0").commit();
         }
-        for(int a:values)
-            System.out.println(a);
 
     }
 }
