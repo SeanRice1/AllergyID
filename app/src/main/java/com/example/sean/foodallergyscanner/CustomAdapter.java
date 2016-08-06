@@ -24,15 +24,22 @@ public class CustomAdapter extends ArrayAdapter<AllergyModel>{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.allergy_row, null);
 
         CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.checkBox);
         checkBox.setText(resource[position].getName());
-
         checkBox.setChecked(resource[position].isChecked());
+
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resource[position].switchedCheckedValue();
+                AllergyData.sharedPreferencesUpdater(position);
+            }
+        });
 
         return rowView;
     }

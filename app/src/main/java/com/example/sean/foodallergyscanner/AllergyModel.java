@@ -21,5 +21,12 @@ public class AllergyModel {
         else
             return true;
     }
+    public void switchedCheckedValue(){
+        if(checkedValue == 0)
+            this.checkedValue = 1;
+        else
+            this.checkedValue = 0;
+
+    }
 
 }
