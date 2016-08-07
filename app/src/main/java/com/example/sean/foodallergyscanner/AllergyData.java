@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class AllergyData {
 
     private static Context context;
@@ -15,9 +17,9 @@ public class AllergyData {
             "Gluten", "Lactose", "Milk", "Peanuts", "Sesame seeds", "Shellfish", "Soybean"
             , "Sulfites", "Tree Nuts", "Wheat"};
     public static int[] values = new int[15];
-
-
     public static AllergyModel[] allergyArr = new AllergyModel[15];
+    public static ArrayList<String> currentlyChecked= new ArrayList<>();
+
 
     public static void createArr(Context contextInput) {
         context = contextInput;
@@ -52,6 +54,8 @@ public class AllergyData {
             //else get stored values
             for (int x = 0; x < 15; x++) {
                 values[x]=Integer.parseInt(sharedPreferences.getString(names[x],"0"));
+                if (Integer.parseInt(sharedPreferences.getString(names[x],"0"))==1)
+                    currentlyChecked.add(names[x]);
             }
 
         }

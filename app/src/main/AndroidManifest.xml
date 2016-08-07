@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sean.foodallergyscanner">
-<uses-permission android:name="android.permission.INTERNET">
 
-</uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="face"></meta-data>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +26,13 @@
         </activity>
         <activity android:name=".EditAllergies">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.sean.foodallergyscanner.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".Scanner">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sean.foodallergyscanner.MainActivity" />
+                android:value=".MainActivity" />
         </activity>
         <activity android:name=".Result"></activity>
     </application>
