@@ -63,7 +63,7 @@ public class Scanner extends Activity {
         final CameraSource cameraSource = new CameraSource.Builder(this, barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setRequestedFps(15f)
-                .setAutoFocusEnabled(true) //TODO: check and makesure you can use autofocus
+                .setAutoFocusEnabled(true) //TODO: check and make sure autofocus is available
                 .setRequestedPreviewSize(1600, 1024)
                 .build();
 
@@ -109,7 +109,7 @@ public class Scanner extends Activity {
                 SparseArray<Barcode> resultingBarcodes = detections.getDetectedItems();
 
                     if (resultingBarcodes.size() > 0) {
-                        //TODO:Submit only 1 intent 
+                        //TODO:Submit only 1 intent
                         Intent intent = new Intent(getApplicationContext(), Result.class);
                         //Log.i("receiveDetections@@",resultingBarcodes.valueAt(0).displayValue);
                         intent.putExtra("UPC", resultingBarcodes.valueAt(0).displayValue);
