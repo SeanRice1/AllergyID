@@ -18,14 +18,14 @@ public class Result extends AppCompatActivity {
 
         Intent intent = getIntent();
         FoodInfo foodInfo = new FoodInfo();
-        FoodInfo.setUpcCode(intent.getStringExtra("UPC"));
+        foodInfo.setUpcCode(intent.getStringExtra("UPC"));
         foodInfo.getFoodInfo();
 
         result1.setText( "Your product contains the following items that youre" +
-                " allergic to: "+ FoodInfo.containsYourAllergen());
+                " allergic to: "+ foodInfo.containsYourAllergen());
 
         result2.setText( "Your product may contain the following items that youre" +
-                " allergic to: "+ FoodInfo.mayContainYourAllergen());
+                " allergic to: "+ foodInfo.mayContainYourAllergen());
 
     }
 }

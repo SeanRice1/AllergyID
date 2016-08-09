@@ -23,11 +23,12 @@ public class FoodInfo extends Activity {
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
     private static String upcCode = "";
-    private static ArrayList<String> listOfPresentAllergens = new ArrayList<>();
-    private static ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
+    private  ArrayList<String> listOfPresentAllergens = new ArrayList<>();
+    private  ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
 
+    //TODO: Show if the UPC isnt found 
 
-    public static void setUpcCode(String code){
+    public void setUpcCode(String code){
         upcCode = code;
     }
     public String makeApiRequestUrl(){
@@ -101,7 +102,7 @@ public class FoodInfo extends Activity {
 
     }
 
-    public static String containsYourAllergen(){
+    public  String containsYourAllergen(){
 
         StringBuilder builder = new StringBuilder();
 
@@ -112,15 +113,16 @@ public class FoodInfo extends Activity {
             }
         }
         return  builder.toString();
+
     }
-    public static String mayContainYourAllergen(){
+    public  String mayContainYourAllergen(){
         StringBuilder builder = new StringBuilder();
 
         for(String a: listOfPossibleAllergens){
             for( String b: AllergyData.currentlyChecked){
                 if(a.equals(b))
                     builder.append(b+", ");
-            }
+            }//TODO: This not working?
         }
         return  builder.toString();
     }
