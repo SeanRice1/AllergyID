@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -31,13 +32,29 @@ public class Scanner extends Activity {
 
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
-        //int perm = ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
+        int perm = ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
+
+        if(perm == PackageManager.PERMISSION_GRANTED)
+            createScanner();
+        else
+            requestCameraPermission();
 
 
-        createScanner();
+
     }
 
+    public void requestCameraPermission(){
+        if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(Scanner.this,new String[]{Manifest.permission.CAMERA},CAMERA_REQUEST);
+
+        }
+    }
+
+
+
     private void createScanner() {
+
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this).build();
 
                 /*
@@ -62,13 +79,16 @@ public class Scanner extends Activity {
 
 
                 try {
+                    Log.i("createScanner","before checking permission");
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
-                        ActivityCompat.requestPermissions(Scanner.this,new String[]{Manifest.permission.CAMERA},CAMERA_REQUEST);
-                        createScanner();
+                        Log.i("createScanner","inside checking permission before request permission");
+                        requestCameraPermission();
+                        Log.i("createScanner","inside checking permission after request permission");
                     }
 
+                    Log.i("createScanner","Before creating camera source and after checking permission");
                     cameraSource.start(surfaceView.getHolder());
+                    Log.i("createScanner","After creating camera source");
                 }
                 catch (IOException e){
                     e.printStackTrace();
@@ -103,6 +123,25 @@ public class Scanner extends Activity {
                 }
             }
         });
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[]
+            ,int[] grantResults){
+
+        Log.i("onRequestPermission","on call before anything");
+
+        switch (requestCode){
+            case CAMERA_REQUEST: {
+                if (grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    Log.i("onRequestPermission","before createScanner");
+                    createScanner();
+
+                }
+            }
+
+
+        }
+
     }
 
 
