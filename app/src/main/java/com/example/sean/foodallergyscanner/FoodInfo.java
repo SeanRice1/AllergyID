@@ -1,7 +1,10 @@
 package com.example.sean.foodallergyscanner;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,10 +19,10 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-public class FoodInfo {
+public class FoodInfo extends Activity {
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
-    private static String upcCode = "050200559105";
+    private static String upcCode = "";
     private static ArrayList<String> listOfPresentAllergens = new ArrayList<>();
     private static ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
 
@@ -63,7 +66,7 @@ public class FoodInfo {
         }
     }
     public void getFoodInfo(){
-
+        Log.i("FoodInfo",makeApiRequestUrl());
         CallApi call = new CallApi();
 
         String results=null;
@@ -108,7 +111,7 @@ public class FoodInfo {
                     builder.append(b+", ");
             }
         }
-        return "Your product contains these ingredients "+ builder.toString();
+        return  builder.toString();
     }
     public static String mayContainYourAllergen(){
         StringBuilder builder = new StringBuilder();
@@ -119,7 +122,7 @@ public class FoodInfo {
                     builder.append(b+", ");
             }
         }
-        return "Your product may contain these ingredients "+ builder.toString();
+        return  builder.toString();
     }
 }
 

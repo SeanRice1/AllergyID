@@ -17,7 +17,9 @@ public class Result extends AppCompatActivity {
         TextView result2 = (TextView)findViewById(R.id.results2);
 
         Intent intent = getIntent();
+        FoodInfo foodInfo = new FoodInfo();
         FoodInfo.setUpcCode(intent.getStringExtra("UPC"));
+        foodInfo.getFoodInfo();
 
         result1.setText( "Your product contains the following items that youre" +
                 " allergic to: "+ FoodInfo.containsYourAllergen());

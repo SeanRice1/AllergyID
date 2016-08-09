@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
         AllergyData.createArr(this);
 
-        FoodInfo foodInfo = new FoodInfo();
-        foodInfo.getFoodInfo();
         //temporary for AllergySettings creation
         Button editAllergies = (Button) findViewById(R.id.editAllergiesBut);
         editAllergies.setOnClickListener(new View.OnClickListener() {

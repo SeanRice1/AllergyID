@@ -55,23 +55,18 @@ public class Scanner extends Activity {
 
     private void createScanner() {
 
-        BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this).build();
-
-                /*
+        BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.UPC_E)
                 .setBarcodeFormats(Barcode.UPC_A)
                 .build();
-*/
+
         final CameraSource cameraSource = new CameraSource.Builder(this, barcodeDetector)
+                .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setRequestedFps(15f)
-                .setRequestedPreviewSize(500, 500)
+                .setAutoFocusEnabled(true) //TODO: check and makesure you can use autofocus
+                .setRequestedPreviewSize(1600, 1024)
                 .build();
 
-                /*
-                .setFacing(CameraSource.CAMERA_FACING_BACK)
-                .setAutoFocusEnabled(true)
-                .build();
-*/
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
 
             @Override
@@ -79,16 +74,12 @@ public class Scanner extends Activity {
 
 
                 try {
-                    Log.i("createScanner","before checking permission");
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        Log.i("createScanner","inside checking permission before request permission");
                         requestCameraPermission();
-                        Log.i("createScanner","inside checking permission after request permission");
-                    }
 
-                    Log.i("createScanner","Before creating camera source and after checking permission");
+                    }
                     cameraSource.start(surfaceView.getHolder());
-                    Log.i("createScanner","After creating camera source");
+
                 }
                 catch (IOException e){
                     e.printStackTrace();
@@ -114,13 +105,19 @@ public class Scanner extends Activity {
 
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
+
                 SparseArray<Barcode> resultingBarcodes = detections.getDetectedItems();
 
-                if(resultingBarcodes.size()>0){
-                    Intent intent = new Intent(getApplicationContext(),Result.class);
-                    intent.putExtra("UPC",resultingBarcodes.valueAt(0).displayValue);
-                    startActivity(intent);
-                }
+                    if (resultingBarcodes.size() > 0) {
+                        //TODO:Submit only 1 intent 
+                        Intent intent = new Intent(getApplicationContext(), Result.class);
+                        //Log.i("receiveDetections@@",resultingBarcodes.valueAt(0).displayValue);
+                        intent.putExtra("UPC", resultingBarcodes.valueAt(0).displayValue);
+                        startActivity(intent);
+                        finish();
+                        Log.i("receiveDetections@@", resultingBarcodes.valueAt(0).displayValue);
+                    }
+
             }
         });
     }
@@ -128,12 +125,10 @@ public class Scanner extends Activity {
     public void onRequestPermissionsResult(int requestCode, String permissions[]
             ,int[] grantResults){
 
-        Log.i("onRequestPermission","on call before anything");
 
         switch (requestCode){
             case CAMERA_REQUEST: {
                 if (grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    Log.i("onRequestPermission","before createScanner");
                     createScanner();
 
                 }
@@ -143,6 +138,5 @@ public class Scanner extends Activity {
         }
 
     }
-
 
 }
