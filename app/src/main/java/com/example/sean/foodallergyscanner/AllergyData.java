@@ -17,7 +17,7 @@ public class AllergyData {
             "Gluten", "Lactose", "Milk", "Peanuts", "Sesame seeds", "Shellfish", "Soybean"
             , "Sulfites", "Tree Nuts", "Wheat"};
     public static int[] values = new int[15];
-    public static AllergyModel[] allergyArr = new AllergyModel[15];
+    public static AllergyModel[] allergyArr = new AllergyModel[15];//TODO: update allergyArr when unchecking then scanning again
     public static ArrayList<String> currentlyChecked= new ArrayList<>();
 
 
