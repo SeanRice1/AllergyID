@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
                         ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CAMERA},0);
 
                     }
+                else{
+                        Intent intent = new Intent(getApplicationContext(),Scanner.class);
+                        startActivity(intent);
+                    }
 
 
             }
