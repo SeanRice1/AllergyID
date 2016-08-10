@@ -17,14 +17,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 
 public class FoodInfo extends Activity {
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
-    private static String upcCode = "";
-    private  ArrayList<String> listOfPresentAllergens = new ArrayList<>();
-    private  ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
+    private  String upcCode = "";
+    protected   ArrayList<String> listOfPresentAllergens = new ArrayList<>();
+    protected   ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
     private boolean upcNotFound = false;
 
     //TODO: Show if the UPC isnt found 
@@ -111,28 +113,41 @@ public class FoodInfo extends Activity {
     }
 
     public  String containsYourAllergen(){
+        //TODO:Make more efficient
+        String result="";
+        HashSet<String> results = new HashSet<>();
 
-        StringBuilder builder = new StringBuilder();
-
-        for(String a: listOfPresentAllergens){
-            for( String b: AllergyData.currentlyChecked){
-                if(a.equals(b))
-                    builder.append(b+", ");
+        for(String a: listOfPresentAllergens) {
+            Log.i("listofpresent", a);
+            for (String b : AllergyData.currentlyChecked) {
+                Log.i("currentlyChecked", b);
+                if (a.equals(b)) {
+                    results.add(a);
+                }
             }
         }
-        return  builder.toString();
 
+        result = results.toString();
+        result=result.replace("[","");
+        result=result.replace("]","");
+        return result;
     }
     public  String mayContainYourAllergen(){
-        StringBuilder builder = new StringBuilder();
+        //TODO:Make more efficient
+        String result ="";
+        HashSet<String> results = new HashSet<>();
 
         for(String a: listOfPossibleAllergens){
             for( String b: AllergyData.currentlyChecked){
                 if(a.equals(b))
-                    builder.append(b+", ");
-            }//TODO: This not working?
+                    results.add(a);
+            }
         }
-        return  builder.toString();
+
+    result = results.toString();
+    result=result.replace("[","");
+    result=result.replace("]","");
+    return result;
     }
     public boolean upcNotFound (){
         return upcNotFound;

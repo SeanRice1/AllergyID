@@ -24,7 +24,6 @@ public class Scanner extends Activity {
     SurfaceView surfaceView;
     final static int CAMERA_REQUEST=5;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +33,10 @@ public class Scanner extends Activity {
 
         int perm = ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
 
-        if(perm == PackageManager.PERMISSION_GRANTED)
+        if(perm == PackageManager.PERMISSION_GRANTED) {
             createScanner();
+
+        }
         else
             requestCameraPermission();
 
@@ -100,7 +101,6 @@ public class Scanner extends Activity {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-
             }
 
             @Override
@@ -110,7 +110,7 @@ public class Scanner extends Activity {
 
                     if (resultingBarcodes.size() > 0) {
                         //TODO:Submit only 1 intent
-                        Intent intent = new Intent(getApplicationContext(), Result.class);
+                       Intent intent = new Intent(getApplicationContext(), Result.class);
                         //Log.i("receiveDetections@@",resultingBarcodes.valueAt(0).displayValue);
                         intent.putExtra("UPC", resultingBarcodes.valueAt(0).displayValue);
                         startActivity(intent);

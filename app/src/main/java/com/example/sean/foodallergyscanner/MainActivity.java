@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //temporary for AllergySettings creation
+        //temporary for scanner
         Button scanner = (Button) findViewById(R.id.scanButton);
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override

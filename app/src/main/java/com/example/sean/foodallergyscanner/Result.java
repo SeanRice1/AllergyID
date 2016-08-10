@@ -29,19 +29,19 @@ public class Result extends AppCompatActivity {
 
      if(!foodInfo.upcNotFound()) {
 
-         //if(!foodInfo.containsYourAllergen().isEmpty()) {
+         if(!foodInfo.containsYourAllergen().isEmpty()) {
              String text ="Your product contains the following items that youre" +
                                      " allergic to: " + foodInfo.containsYourAllergen();
              result1.setText(text);
              result1.animate().alpha(1f).setDuration(1000).start();
-        // }
+         }
 
-         //if(!foodInfo.mayContainYourAllergen().isEmpty()) {
+         if(!foodInfo.mayContainYourAllergen().isEmpty()) {
              String text1 = "Your product may contain the following items that youre" +
                      " allergic to: " + foodInfo.mayContainYourAllergen();
              result2.setText(text1);
              result2.animate().alpha(1f).setDuration(1000).start();
-        // }
+         }
      }
         else
          title.setText("Product not found");
