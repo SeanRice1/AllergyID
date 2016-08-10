@@ -25,14 +25,16 @@ public class FoodInfo extends Activity {
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
     private  String upcCode = "";
-    protected   ArrayList<String> listOfPresentAllergens = new ArrayList<>();
-    protected   ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
+    private   ArrayList<String> listOfPresentAllergens = new ArrayList<>();
+    private   ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
+    private String productName ="";
     private boolean upcNotFound = false;
 
     public void setUpcCode(String code){
         upcCode = code;
     }
     public String makeApiRequestUrl(){
+
         return "http://api.foodessentials.com/label?u="+ upcCode
                 +"&sid=af520b23-4799-4a54-bc94-488484fa8ac0&appid=demoApp_01&f=json&long=38.6300&lat=90.2000&api_key="+API_KEY;
     }
@@ -54,7 +56,6 @@ public class FoodInfo extends Activity {
                     upcNotFound = true;
                 else {
                     while (read != null) {
-                        Log.i("@@",read);
                         builder.append(read);
                         builder.append(System.lineSeparator());
                         read = reader.readLine();
@@ -75,7 +76,6 @@ public class FoodInfo extends Activity {
         }
     }
     public void getFoodInfo(){
-        Log.i("FoodInfo",makeApiRequestUrl());
         CallApi call = new CallApi();
 
         String results=null;
@@ -101,7 +101,12 @@ public class FoodInfo extends Activity {
                     listOfPossibleAllergens.add(temp.getString("allergen_name"));
                 if(Integer.parseInt(temp.getString("allergen_value"))==2)
                     listOfPresentAllergens.add(temp.getString("allergen_name"));
+
             }
+
+            productName = obj.getString("product_name");
+
+
 
         }
         catch (JSONException e){
@@ -149,6 +154,9 @@ public class FoodInfo extends Activity {
     }
     public boolean upcNotFound (){
         return upcNotFound;
+    }
+    public String getProductName(){
+        return productName;
     }
 }
 

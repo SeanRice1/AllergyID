@@ -29,6 +29,8 @@ public class Result extends AppCompatActivity {
 
      if(!foodInfo.upcNotFound()) {
 
+        title.setText(foodInfo.getProductName());
+
          if(!foodInfo.containsYourAllergen().isEmpty()) {
              String text ="Your product contains the following items that youre" +
                                      " allergic to: " + foodInfo.containsYourAllergen();
@@ -45,5 +47,7 @@ public class Result extends AppCompatActivity {
      }
         else
          title.setText("Product not found");
+
+
     }
 }

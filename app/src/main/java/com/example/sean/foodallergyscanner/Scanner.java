@@ -116,13 +116,10 @@ public class Scanner extends Activity {
                 SparseArray<Barcode> resultingBarcodes = detections.getDetectedItems();
 
                     if (resultingBarcodes.size() > 0) {
-                        //TODO:Submit only 1 intent
                        Intent intent = new Intent(getApplicationContext(), Result.class);
-                        //Log.i("receiveDetections@@",resultingBarcodes.valueAt(0).displayValue);
                         intent.putExtra("UPC", resultingBarcodes.valueAt(0).displayValue);
                         startActivity(intent);
                         finish();
-                        Log.i("receiveDetections@@", resultingBarcodes.valueAt(0).displayValue);
                     }
 
             }
