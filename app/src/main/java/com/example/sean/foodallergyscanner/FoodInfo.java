@@ -25,6 +25,7 @@ public class FoodInfo extends Activity {
     private static String upcCode = "";
     private  ArrayList<String> listOfPresentAllergens = new ArrayList<>();
     private  ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
+    private boolean upcNotFound = false;
 
     //TODO: Show if the UPC isnt found 
 
@@ -47,12 +48,19 @@ public class FoodInfo extends Activity {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
                 StringBuilder builder = new StringBuilder();
-                String read;
+                String read = reader.readLine();
 
-                while((read = reader.readLine())!= null){
-                    builder.append(read);
-                    builder.append(System.lineSeparator());
+                if(read.equals("{}"))
+                    upcNotFound = true;
+                else {
+                    while (read != null) {
+                        Log.i("@@",read);
+                        builder.append(read);
+                        builder.append(System.lineSeparator());
+                        read = reader.readLine();
+                    }
                 }
+
                 return builder.toString();
 
             } catch (MalformedURLException e) {
@@ -125,6 +133,9 @@ public class FoodInfo extends Activity {
             }//TODO: This not working?
         }
         return  builder.toString();
+    }
+    public boolean upcNotFound (){
+        return upcNotFound;
     }
 }
 
