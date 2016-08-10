@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
@@ -61,12 +63,17 @@ public class Scanner extends Activity {
                 .setBarcodeFormats(Barcode.UPC_A)
                 .build();
 
-        final CameraSource cameraSource = new CameraSource.Builder(this, barcodeDetector)
+        CameraSource.Builder builder = new CameraSource.Builder(this, barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
                 .setRequestedFps(15f)
-                .setAutoFocusEnabled(true) //TODO: check and make sure autofocus is available
-                .setRequestedPreviewSize(1600, 1024)
-                .build();
+                .setRequestedPreviewSize(1600, 1024);
+
+        // make sure that auto focus is an available option
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+           builder.setAutoFocusEnabled(true);
+        }
+
+        final CameraSource cameraSource = builder.build();
 
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
 

@@ -29,8 +29,6 @@ public class FoodInfo extends Activity {
     protected   ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
     private boolean upcNotFound = false;
 
-    //TODO: Show if the UPC isnt found 
-
     public void setUpcCode(String code){
         upcCode = code;
     }
