@@ -12,7 +12,6 @@ public class AllergyData {
     private static Context context;
     protected static SharedPreferences sharedPreferences;
 
-    //temporary for AllergySettings creation
     public static final String[] names = {"Cereals", "Coconut", "Corn", "Egg", "Fish",
             "Gluten", "Lactose", "Milk", "Peanuts", "Sesame seeds", "Shellfish", "Soybean"
             , "Sulfites", "Tree Nuts", "Wheat"};

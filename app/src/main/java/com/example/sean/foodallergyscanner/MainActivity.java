@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         AllergyData.createArr(this);
 
         //temporary for AllergySettings creation
-        Button editAllergies = (Button) findViewById(R.id.editAllergiesBut);
+        ImageButton editAllergies = (ImageButton) findViewById(R.id.editAllergiesBut);
         editAllergies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //temporary for scanner
-        Button scanner = (Button) findViewById(R.id.scanButton);
+        ImageButton scanner = (ImageButton) findViewById(R.id.scannerButton);
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
