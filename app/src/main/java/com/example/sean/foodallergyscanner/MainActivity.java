@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-
+//TODO: optimize drawable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
