@@ -53,13 +53,12 @@ public class Result extends AppCompatActivity {
 
             title.setText(foodInfo.getProductName());
 
-            if(!foodInfo.containsYourAllergen().isEmpty()) {
-                String text =foodInfo.getProductName()+ " contains the following items that you're" +
-                        " allergic to: " + foodInfo.containsYourAllergen();
-                result1.setText(text);
+            if(foodInfo.containsYourAllergen().isEmpty() && foodInfo.mayContainYourAllergen().isEmpty()){
+                String text2 = foodInfo.getProductName()+ " may be safe";
+                result1.setText(text2);
                 result1.animate().alpha(1f).setDuration(1000).start();
-                headerImg.setImageResource(R.drawable.ic_close_black_24dp);
-                resultsLayout.setBackgroundColor(Color.parseColor("#FFAA0000"));
+                headerImg.setImageResource(R.drawable.ic_check_black_24dp);
+                resultsLayout.setBackgroundColor(Color.parseColor("#FF007D19"));
             }
 
             if(!foodInfo.mayContainYourAllergen().isEmpty()) {
@@ -68,18 +67,22 @@ public class Result extends AppCompatActivity {
                 result2.setText(text1);
                 result2.animate().alpha(1f).setDuration(1000).start();
                 headerImg.setImageResource(R.drawable.ic_close_black_24dp);
-                resultsLayout.setBackgroundColor(Color.parseColor("#FFCA4C04"));
+                resultsLayout.setBackgroundColor(Color.parseColor("#FFC34E00"));
             }
 
-            if(foodInfo.containsYourAllergen().isEmpty() && foodInfo.mayContainYourAllergen().isEmpty()){
-                String text2 = foodInfo.getProductName()+ " may be safe";
-                result1.setText(text2);
+            if(!foodInfo.containsYourAllergen().isEmpty()) {
+                String text =foodInfo.getProductName()+ " contains the following items that you're" +
+                        " allergic to: " + foodInfo.containsYourAllergen();
+                result1.setText(text);
                 result1.animate().alpha(1f).setDuration(1000).start();
-                headerImg.setImageResource(R.drawable.ic_check_black_24dp);
-                resultsLayout.setBackgroundColor(Color.parseColor("#FF007D19"));
+                headerImg.setImageResource(R.drawable.ic_close_black_24dp);
+                resultsLayout.setBackgroundColor(Color.parseColor("#FFAA0000"));
             }
         }
-        else
+        else {
             title.setText("Product not found");
+            resultsLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
+            headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
+        }
     }
 }
