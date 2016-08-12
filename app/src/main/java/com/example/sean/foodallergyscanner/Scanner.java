@@ -33,16 +33,13 @@ public class Scanner extends Activity {
 
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
+        //Checks permissions, and if granted creates scanner
+        //Permissions should be granted by this point
         int perm = ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
-
-        if(perm == PackageManager.PERMISSION_GRANTED) {
+        if(perm == PackageManager.PERMISSION_GRANTED)
             createScanner();
-
-        }
         else
             requestCameraPermission();
-
-
 
     }
 

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,17 +15,24 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-//TODO: optimize drawable
+    ImageButton editAllergies;
+    ImageButton scannerButton;
+    ImageButton manualSearchButton;
+    ImageButton infoButton;
+    //TODO: now available as a general allergy scanner?
+    //TODO: optimize drawable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        manualSearchButton = (ImageButton) findViewById(R.id.manualSearchButton);
+        infoButton = (ImageButton) findViewById(R.id.infoButton);
+        editAllergies = (ImageButton) findViewById(R.id.editAllergiesBut);
+        scannerButton = (ImageButton) findViewById(R.id.scannerButton);
 
         AllergyData.createArr(this);
-
         //temporary for AllergySettings creation
-        ImageButton editAllergies = (ImageButton) findViewById(R.id.editAllergiesBut);
         editAllergies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //temporary for scanner
-        ImageButton scanner = (ImageButton) findViewById(R.id.scannerButton);
-        scanner.setOnClickListener(new View.OnClickListener() {
+        scannerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[]
             ,int[] grantResults){

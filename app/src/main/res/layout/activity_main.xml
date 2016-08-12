@@ -60,7 +60,7 @@
             <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/infoButton"
+                android:id="@+id/manualSearchButton"
                 android:background="@android:color/holo_red_light"
                 android:src="@drawable/ic_find_in_page_black_36dp"
                 android:layout_marginLeft="0dp"
@@ -80,7 +80,7 @@
             <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/imageButton"
+                android:id="@+id/infoButton"
                 android:background="@android:color/holo_green_dark"
                 android:src="@drawable/ic_info_black_36dp"
 

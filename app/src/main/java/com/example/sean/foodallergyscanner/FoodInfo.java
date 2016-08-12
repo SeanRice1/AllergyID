@@ -19,14 +19,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class FoodInfo extends Activity {
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
     private  String upcCode = "";
-    private   ArrayList<String> listOfPresentAllergens = new ArrayList<>();
-    private   ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
+    private  ArrayList<String> listOfPresentAllergens = new ArrayList<>();
+    private  ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
     private String productName ="";
     private boolean upcNotFound = false;
 
@@ -104,9 +106,8 @@ public class FoodInfo extends Activity {
 
             }
 
-            productName = obj.getString("product_name");
-
-
+            //cut off the name of the company for the product
+            productName = obj.getString("product_name").substring(obj.getString("product_name").indexOf(',')+1).toLowerCase();
 
         }
         catch (JSONException e){
