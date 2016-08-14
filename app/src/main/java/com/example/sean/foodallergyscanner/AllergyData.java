@@ -16,7 +16,7 @@ public class AllergyData {
             "Gluten", "Lactose", "Milk", "Peanuts", "Sesame seeds", "Shellfish", "Soybean"
             , "Sulfites", "Tree Nuts", "Wheat"};
     public static int[] values = new int[15];
-    public static AllergyModel[] allergyArr = new AllergyModel[15];//TODO: update allergyArr when unchecking then scanning again
+    public static AllergyModel[] allergyArr = new AllergyModel[15];
     public static ArrayList<String> currentlyChecked= new ArrayList<>();
 
 
@@ -46,7 +46,7 @@ public class AllergyData {
         //If shared preferences is empty, set default values
         if (!sharedPreferences.contains("Cereals")) {
             for (int x = 0; x < 15; x++) {
-                sharedPreferences.edit().putString(names[x], "0").commit();
+                sharedPreferences.edit().putString(names[x], "0").apply();
                 values[x]=0;
             }
         } else {
@@ -63,11 +63,27 @@ public class AllergyData {
     public static void sharedPreferencesUpdater(int position){
         if(values[position]==0) {
             values[position] = 1;
-            sharedPreferences.edit().putString(names[position],"1").commit();
+            sharedPreferences.edit().putString(names[position],"1").apply();
         }
         else {
             values[position] = 0;
-            sharedPreferences.edit().putString(names[position],"0").commit();
+            sharedPreferences.edit().putString(names[position],"0").apply();
+            /*
+            for (String a:currentlyChecked
+                 ) {
+                Log.i("AllergyData@@",a);
+            }
+            */
+            while(currentlyChecked.contains(names[position])) {
+                currentlyChecked.remove(names[position]);//TODO: figure out why there are multiple
+                //inputs for currentlyChecked
+            }
+            /*
+            for (String a:currentlyChecked
+                    ) {
+                Log.i("AllergyData@@","Second: "+a);
+            }
+            */
         }
 
     }
