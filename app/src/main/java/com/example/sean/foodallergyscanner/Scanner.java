@@ -25,7 +25,7 @@ public class Scanner extends Activity {
 
     SurfaceView surfaceView;
     final static int CAMERA_REQUEST=5;
-
+    //TODO: make scanner overlay
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,7 @@ public class Scanner extends Activity {
 
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
+        //TODO:Do i ever need to check permissions here?
         //Checks permissions, and if granted creates scanner
         //Permissions should be granted by this point
         int perm = ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
@@ -51,8 +52,6 @@ public class Scanner extends Activity {
         }
     }
 
-
-
     private void createScanner() {
 
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this)
@@ -67,7 +66,7 @@ public class Scanner extends Activity {
 
         // make sure that auto focus is an available option
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-           builder.setAutoFocusEnabled(true);
+           builder.setAutoFocusEnabled(true);//TODO:set the speed of autofocus faster?
         }
 
         final CameraSource cameraSource = builder.build();

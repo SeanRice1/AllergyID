@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 
 
 public class FoodInfo extends Activity {
+    //TODO: add more allergies (low priority)
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
     private  String upcCode = "";

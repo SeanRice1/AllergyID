@@ -68,22 +68,12 @@ public class AllergyData {
         else {
             values[position] = 0;
             sharedPreferences.edit().putString(names[position],"0").apply();
-            /*
-            for (String a:currentlyChecked
-                 ) {
-                Log.i("AllergyData@@",a);
-            }
-            */
+
             while(currentlyChecked.contains(names[position])) {
-                currentlyChecked.remove(names[position]);//TODO: figure out why there are multiple
+                currentlyChecked.remove(names[position]);//TODO: figure out why there are multiple (low priority)
                 //inputs for currentlyChecked
             }
-            /*
-            for (String a:currentlyChecked
-                    ) {
-                Log.i("AllergyData@@","Second: "+a);
-            }
-            */
+
         }
 
     }
