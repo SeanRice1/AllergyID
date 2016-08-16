@@ -12,6 +12,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 
 import com.google.android.gms.vision.CameraSource;
@@ -41,6 +42,7 @@ public class Scanner extends Activity {
             createScanner();
         else
             requestCameraPermission();
+
 
     }
 
@@ -79,7 +81,11 @@ public class Scanner extends Activity {
 
                 try {
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        requestCameraPermission();
+                        //requestCameraPermission();
+
+                        Toast.makeText(Scanner.this, "Camera doesnt have permission!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
 
                     }
                     cameraSource.start(surfaceView.getHolder());
@@ -121,6 +127,7 @@ public class Scanner extends Activity {
             }
         });
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[]
             ,int[] grantResults){

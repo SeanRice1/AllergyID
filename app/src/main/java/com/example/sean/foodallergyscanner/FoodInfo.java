@@ -32,6 +32,7 @@ public class FoodInfo extends Activity {
     private  ArrayList<String> listOfPossibleAllergens = new ArrayList<>();
     private String productName ="";
     private boolean upcNotFound = false;
+    private boolean noInternet = false;
 
     public void setUpcCode(String code){
         upcCode = code;
@@ -46,18 +47,18 @@ public class FoodInfo extends Activity {
 
         @Override
         protected String doInBackground(String... requestUrl) {
-
             try {
                 URL url = new URL(requestUrl[0]);
+
+
                 HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
                 StringBuilder builder = new StringBuilder();
                 String read = reader.readLine();
-
                 if(read.equals("{}"))
                     upcNotFound = true;
-                else {
+                else{
                     while (read != null) {
                         builder.append(read);
                         builder.append(System.lineSeparator());
@@ -71,10 +72,11 @@ public class FoodInfo extends Activity {
                 e.printStackTrace();
             }
             catch (IOException e){
+                noInternet = true;
+                finish();
                 e.printStackTrace();
             }
-
-
+            
             return null;
         }
     }
@@ -87,8 +89,9 @@ public class FoodInfo extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        parseInputJSON(results);
-
+        if (!noInternet()) {
+            parseInputJSON(results);
+        }
 
     }
     public void parseInputJSON(String input){
@@ -156,6 +159,9 @@ public class FoodInfo extends Activity {
     }
     public boolean upcNotFound (){
         return upcNotFound;
+    }
+    public boolean noInternet(){
+        return noInternet;
     }
     public String getProductName(){
         return productName;
