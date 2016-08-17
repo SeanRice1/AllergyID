@@ -25,7 +25,7 @@ import java.io.IOException;
 public class Scanner extends Activity {
 
     SurfaceView surfaceView;
-    final static int CAMERA_REQUEST=5;
+
     //TODO: make scanner overlay
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +34,8 @@ public class Scanner extends Activity {
 
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
-        //TODO:Do i ever need to check permissions here?
-        //Checks permissions, and if granted creates scanner
-        //Permissions should be granted by this point
-        int perm = ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
-        if(perm == PackageManager.PERMISSION_GRANTED)
             createScanner();
-        else
-            requestCameraPermission();
-
-
     }
-
-    public void requestCameraPermission(){
-        if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(Scanner.this,new String[]{Manifest.permission.CAMERA},CAMERA_REQUEST);
-
-        }
-    }
-
     private void createScanner() {
 
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this)
@@ -81,7 +63,6 @@ public class Scanner extends Activity {
 
                 try {
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        //requestCameraPermission();
 
                         Toast.makeText(Scanner.this, "Camera doesnt have permission!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
@@ -126,24 +107,6 @@ public class Scanner extends Activity {
 
             }
         });
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[]
-            ,int[] grantResults){
-
-
-        switch (requestCode){
-            case CAMERA_REQUEST: {
-                if (grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    createScanner();
-
-                }
-            }
-
-
-        }
-
     }
 
 }

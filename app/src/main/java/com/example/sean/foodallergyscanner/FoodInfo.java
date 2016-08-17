@@ -76,7 +76,7 @@ public class FoodInfo extends Activity {
                 finish();
                 e.printStackTrace();
             }
-            
+
             return null;
         }
     }
