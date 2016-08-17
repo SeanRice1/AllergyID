@@ -50,7 +50,7 @@ public class Scanner extends Activity {
 
         // make sure that auto focus is an available option
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-           builder.setAutoFocusEnabled(true);//TODO:set the speed of autofocus faster?
+           builder.setAutoFocusEnabled(true);
         }
 
         final CameraSource cameraSource = builder.build();

@@ -1,23 +1,27 @@
 package com.example.sean.foodallergyscanner;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Result extends AppCompatActivity {
 //TODO: get better result icons
+    //TODO:creating two intents to this activity??
     TextView result1;
     TextView result2;
     TextView title;
     ImageView headerImg;
-    RelativeLayout resultsLayout;
+    LinearLayout resultsLayout;
     FoodInfo foodInfo;
 
     @Override
@@ -29,7 +33,10 @@ public class Result extends AppCompatActivity {
         result2 = (TextView)findViewById(R.id.results2);
         title = (TextView) findViewById(R.id.title);
         headerImg = (ImageView) findViewById(R.id.headerImg);
-        resultsLayout = (RelativeLayout) findViewById(R.id.resultsLayout);
+        resultsLayout = (LinearLayout) findViewById(R.id.resultsLayout);
+        Vibrator vibrate = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+
+        vibrate.vibrate(100);
 
         result1.setAlpha(0f);
         result2.setAlpha(0f);
