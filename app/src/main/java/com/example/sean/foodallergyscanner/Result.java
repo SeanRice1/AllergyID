@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Result extends AppCompatActivity {
-
+//TODO: get better result icons
     TextView result1;
     TextView result2;
     TextView title;
@@ -34,13 +34,10 @@ public class Result extends AppCompatActivity {
         result1.setAlpha(0f);
         result2.setAlpha(0f);
 
-
         getFoodInfo();
         setText();
-
-
-
     }
+
     public void getFoodInfo(){
         Intent intent = getIntent();
         foodInfo = new FoodInfo();
@@ -48,8 +45,9 @@ public class Result extends AppCompatActivity {
         foodInfo.getFoodInfo();
 
     }
+
     public void setText(){
-        if(!foodInfo.upcNotFound()) {
+        if(!foodInfo.upcNotFound() && !foodInfo.noInternet()) {
 
             title.setText(foodInfo.getProductName());
 
@@ -79,8 +77,13 @@ public class Result extends AppCompatActivity {
                 resultsLayout.setBackgroundColor(Color.parseColor("#FFAA0000"));
             }
         }
-        else {
+        else if(!foodInfo.noInternet()){
             title.setText("Product not found");
+            resultsLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
+            headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
+        }
+        else if (foodInfo.noInternet()){
+            title.setText("Please connect to the internet");
             resultsLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
             headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
         }
