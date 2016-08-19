@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO: now available as a general allergy scanner?
     //TODO: optimize drawable
-    //TODO: add info
+    //TODO: make info UI (single imageview?)
+    //TODO: add ripple animation to buttons
     //TODO: make everything nicer looking
     //TODO: change app theme colors
     //TODO: remake home UI
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void infoButton(View view){
+        Intent intent = new Intent(getApplicationContext(),FoodInfo.class);
+        startActivity(intent);
+    }
     public void scannerButton(View view) {
         requestCameraPermission();
     }

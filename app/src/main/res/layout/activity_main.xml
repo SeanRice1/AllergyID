@@ -85,9 +85,9 @@
                 android:id="@+id/infoButton"
                 android:background="@android:color/holo_green_dark"
                 android:src="@drawable/ic_info_black_36dp"
-
                 android:layout_margin="5dp"
-                android:clickable="true" />
+                android:clickable="true"
+                android:onClick="infoButton"/>
         </LinearLayout>
 
     </RelativeLayout>
