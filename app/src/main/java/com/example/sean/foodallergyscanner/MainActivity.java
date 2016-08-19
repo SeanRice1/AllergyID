@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     //TODO: now available as a general allergy scanner?
     //TODO: optimize drawable
     //TODO: add info
-    //TODO: add manual search
     //TODO: make everything nicer looking
     //TODO: change app theme colors
     //TODO: remake home UI
@@ -47,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void allergySettingsButton(View view){
         Intent intent = new Intent(getApplicationContext(), EditAllergies.class);
+        startActivity(intent);
+    }
+
+    public void manualSearchButton(View view){
+        Intent intent = new Intent(getApplicationContext(),ManualSearch.class);
         startActivity(intent);
     }
 

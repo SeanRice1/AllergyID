@@ -48,6 +48,7 @@ public class Result extends AppCompatActivity {
     public void getFoodInfo(){
         Intent intent = getIntent();
         foodInfo = new FoodInfo();
+        Log.i("UPC","The UPC code is: " + intent.getStringExtra("UPC"));
         foodInfo.setUpcCode(intent.getStringExtra("UPC"));
         foodInfo.getFoodInfo();
 
