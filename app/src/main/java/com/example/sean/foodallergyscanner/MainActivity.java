@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton scannerButton;
     ImageButton manualSearchButton;
     ImageButton infoButton;
-
+    //TODO: optimize buttom feedback ( style possibly) dont have multiple xml files
     //TODO: now available as a general allergy scanner?
     //TODO: optimize drawable
     //TODO: make info UI (single imageview?)
