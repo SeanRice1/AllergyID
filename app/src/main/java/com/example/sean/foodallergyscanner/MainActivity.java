@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void infoButton(View view){
-        Intent intent = new Intent(getApplicationContext(),FoodInfo.class);
+        Intent intent = new Intent(getApplicationContext(),Info.class);
         startActivity(intent);
     }
     public void scannerButton(View view) {

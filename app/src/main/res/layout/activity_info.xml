@@ -21,12 +21,12 @@
 
         License info         "
         android:id="@+id/textView2"
-        android:layout_centerHorizontal="true"
         android:background="#64ffffff"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="top|center_vertical|center_horizontal"
         android:layout_marginTop="0dp"
         android:textSize="13dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false" />
 
     <ImageView
         android:layout_width="wrap_content"

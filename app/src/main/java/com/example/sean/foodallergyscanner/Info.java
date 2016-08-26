@@ -14,8 +14,9 @@ public class Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        ImageView gitHubImage = (ImageView)findViewById(R.id.gitHubImage);
-
+        ImageView gitHubImage = (ImageView)findViewById(R.id.gitHubLogo);
+        //TODO: format text
+        //TODO: this doesnt work
         gitHubImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
