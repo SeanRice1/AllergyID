@@ -4,11 +4,13 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.RippleDrawable;
 import android.media.Image;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,19 +28,20 @@ public class MainActivity extends AppCompatActivity {
     ImageButton scannerButton;
     ImageButton manualSearchButton;
     ImageButton infoButton;
+
+
     //TODO: optimize buttom feedback ( style possibly) dont have multiple xml files
     //TODO: now available as a general allergy scanner?
     //TODO: optimize drawable
-    //TODO: make info UI (single imageview?)
-    //TODO: add ripple animation to buttons
-    //TODO: make everything nicer looking
-    //TODO: change app theme colors
-    //TODO: remake home UI
+    //TODO: add ripple animation to buttons (low priority)
+    //TODO: Redo mainActivity UI, and redo app primary colors
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        startingSplash();
 
         manualSearchButton = (ImageButton) findViewById(R.id.manualSearchButton);
         infoButton = (ImageButton) findViewById(R.id.infoButton);
@@ -46,6 +49,17 @@ public class MainActivity extends AppCompatActivity {
         scannerButton = (ImageButton) findViewById(R.id.scannerButton);
 
         AllergyData.createArr(this);
+    }
+
+    public void startingSplash(){
+        SharedPreferences proceedResult = getSharedPreferences("com.example.sean.FoodAllergyScanner.SplashScreen",MODE_PRIVATE);
+
+        //Checks to see if the user accepted the disclaimer previously
+        if(!proceedResult.contains("acceptedDisclaimer")){
+            Intent intent = new Intent(getApplicationContext(),SplashScreen.class);
+            startActivity(intent);
+        }
+
     }
 
     public void allergySettingsButton(View view){
