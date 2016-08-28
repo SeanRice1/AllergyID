@@ -2,12 +2,16 @@
     <string name="app_name">FoodAllergyScanner</string>
     <string name="about_text">
         <![CDATA[
-        <p><b>App Description</b>: This app was designed to quickly identify if an
+        <p><b>App Description</b>
+        <br>
+        This app was designed to quickly identify if an
         item is unsafe to consume by using a barcode scanner on a device
         you will never be without. This app was not designed to identify
         whether to item is safe to consume.</p>
         <br>
-        <p><b>Directions</b>: Upon opening the application, accept the disclaimer
+        <p><b>Directions</b>
+        <br>
+        Upon opening the application, accept the disclaimer
         and enter your all of your allergies in the settings. When you come
         across a product you would like to test to see if it contains
         one of your listed allergies press the scanner button and hold
@@ -17,7 +21,9 @@
         item, and reveals whether you may be able to consume it make sure
         to double check the ingredients list if the item says its safe.</p>
         <br>
-        <p><b>Disclaimer</b>: This app is designed to be a suggestion and should
+        <p><b>Disclaimer</b>
+        <br>
+        This app is designed to be a suggestion and should
         not under any circumstances take place of actually reading labels
         and ingredients. If the app says your item may or does contain
         substances you are allergic to DO NOT CONSUME THE PRODUCT. If the

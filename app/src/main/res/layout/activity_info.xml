@@ -31,8 +31,13 @@
         android:src="@drawable/github_logo"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentRight="false"
-        android:paddingLeft="100dp" />
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:focusableInTouchMode="false"
+        android:cropToPadding="false"
+        android:baselineAlignBottom="false"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="75dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -40,9 +45,11 @@
         android:id="@+id/linkedInImage"
         android:src="@drawable/linkedin_logo"
         android:layout_alignParentBottom="true"
-        android:layout_alignBottom="@+id/info_text"
         android:layout_centerHorizontal="true"
-        android:paddingRight="100dp" />
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="75dp" />
 
 </RelativeLayout>
 
