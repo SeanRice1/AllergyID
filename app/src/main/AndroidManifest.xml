@@ -65,7 +65,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".SplashScreen"
+            android:theme= "@style/DarkTheme">
+        </activity>
     </application>
 
 </manifest>
