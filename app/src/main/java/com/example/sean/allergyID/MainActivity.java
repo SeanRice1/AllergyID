@@ -1,4 +1,4 @@
-package com.example.sean.foodallergyscanner;
+package com.example.sean.allergyID;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -20,12 +20,11 @@ public class MainActivity extends AppCompatActivity {
     ImageButton manualSearchButton;
     ImageButton infoButton;
 
-
-    //TODO: optimize buttom feedback ( style possibly) dont have multiple xml files
-    //TODO: now available as a general allergy scanner?
-    //TODO: optimize drawable
+    //TODO: AllergyID
+    //TODO: optimize buttom feedback ( style possibly) dont have multiple xml files and vibration
     //TODO: add ripple animation to buttons (low priority)
     //TODO: Redo mainActivity UI, and redo app primary colors
+    //TODO: make a main menu on top left?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,7 +5,7 @@ android {
     buildToolsVersion '23.0.3'
 
     defaultConfig {
-        applicationId "com.example.sean.foodallergyscanner"
+        applicationId "com.example.sean.allergyID"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1

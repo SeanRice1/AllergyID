@@ -1,4 +1,4 @@
-package com.example.sean.foodallergyscanner;
+package com.example.sean.allergyID;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

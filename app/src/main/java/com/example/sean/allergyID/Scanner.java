@@ -1,4 +1,4 @@
-package com.example.sean.foodallergyscanner;
+package com.example.sean.allergyID;
 
 import android.Manifest;
 import android.app.Activity;
