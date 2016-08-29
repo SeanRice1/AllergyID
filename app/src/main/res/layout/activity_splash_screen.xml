@@ -19,15 +19,19 @@
         android:background="#e65b5b"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="75dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/splashText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:background="#64ffffff"
+            android:gravity="center" />
+    </ScrollView>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/splashText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
-        android:textSize="20dp"
-        android:background="#64ffffff"
-        android:gravity="center" />
 </RelativeLayout>
