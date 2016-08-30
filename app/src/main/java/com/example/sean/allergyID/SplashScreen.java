@@ -33,7 +33,7 @@ public class SplashScreen extends AppCompatActivity{
             public void onClick(View view) {
                 //Writes in shared preferences that the user accepted the disclaimer
                 proceedResult.edit().putBoolean("acceptedDisclaimer", true).apply();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainView.class);
                 startActivity(intent);
             }
         });

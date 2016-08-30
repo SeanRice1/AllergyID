@@ -22,51 +22,52 @@
             android:value="barcode" />
 
         <activity
-            android:name="com.example.sean.allergyID.MainActivity"
+            android:name=".EditAllergies"
             android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sean.allergyID.MainView" />
+        </activity>
+        <activity
+            android:name=".Scanner"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sean.allergyID.MainView" />
+        </activity>
+        <activity
+            android:name=".Result"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sean.allergyID.MainView" />
+        </activity>
+        <activity
+            android:name=".ManualSearch"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sean.allergyID.MainView" />
+        </activity>
+        <activity
+            android:name=".Info"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sean.allergyID.MainView" />
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/DarkTheme"></activity>
+        <activity
+            android:name=".MainView"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.sean.allergyID.EditAllergies"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sean.allergyID.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.sean.allergyID.Scanner"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sean.allergyID.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.sean.allergyID.Result"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sean.allergyID.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.sean.allergyID.ManualSearch"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sean.allergyID.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.sean.allergyID.Info"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sean.allergyID.MainActivity" />
-        </activity>
-        <activity android:name="com.example.sean.allergyID.SplashScreen"
-            android:theme= "@style/DarkTheme">
         </activity>
     </application>
 
