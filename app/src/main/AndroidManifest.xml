@@ -61,7 +61,7 @@
             android:theme="@style/DarkTheme"></activity>
         <activity
             android:name=".MainView"
-            android:label=""
+            android:label="AllergyID"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

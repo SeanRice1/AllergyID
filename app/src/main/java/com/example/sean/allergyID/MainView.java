@@ -34,6 +34,8 @@ public class MainView extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setTitle("");
+
         startingSplash();
         AllergyData.createArr(this);
 
