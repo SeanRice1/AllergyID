@@ -55,7 +55,7 @@ public class MainView extends AppCompatActivity
     }
 
     public void startingSplash(){
-        SharedPreferences proceedResult = getSharedPreferences("com.example.sean.FoodAllergyScanner.SplashScreen",MODE_PRIVATE);
+        SharedPreferences proceedResult = getSharedPreferences("com.example.sean.allergyID.SplashScreen",MODE_PRIVATE);
 
         //Checks to see if the user accepted the disclaimer previously
         if(!proceedResult.contains("acceptedDisclaimer")){

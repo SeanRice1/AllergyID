@@ -24,7 +24,7 @@ public class SplashScreen extends AppCompatActivity{
         splashText.setText(Html.fromHtml(getString(R.string.disclaimer)));
 
         final SharedPreferences proceedResult = getApplicationContext().getSharedPreferences
-                ("com.example.sean.FoodAllergyScanner.SplashScreen",MODE_PRIVATE);
+                ("com.example.sean.allergyID.SplashScreen",MODE_PRIVATE);
 
 
     if(proceedButton != null) {
