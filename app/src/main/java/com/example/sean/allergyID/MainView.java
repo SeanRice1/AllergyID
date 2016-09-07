@@ -6,43 +6,55 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
-
-    ImageButton editAllergies;
-    ImageButton scannerButton;
-    ImageButton manualSearchButton;
-    ImageButton infoButton;
+public class MainView extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     //TODO: AllergyID
     //TODO: optimize buttom feedback ( style possibly) dont have multiple xml files and vibration
     //TODO: add ripple animation to buttons (low priority)
-    //TODO: Redo mainActivity UI, and redo app primary colors
-    //TODO: make a main menu on top left?
+    //TODO: redo app primary colors, customize fonts
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        setTitle("");
 
         startingSplash();
-
-        manualSearchButton = (ImageButton) findViewById(R.id.manualSearchButton);
-        infoButton = (ImageButton) findViewById(R.id.infoButton);
-        editAllergies = (ImageButton) findViewById(R.id.editAllergiesBut);
-        scannerButton = (ImageButton) findViewById(R.id.scannerButton);
-
         AllergyData.createArr(this);
+
+        setContentView(R.layout.activity_main_view);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void startingSplash(){
-        SharedPreferences proceedResult = getSharedPreferences("com.example.sean.FoodAllergyScanner.SplashScreen",MODE_PRIVATE);
+        SharedPreferences proceedResult = getSharedPreferences("com.example.sean.allergyID.SplashScreen",MODE_PRIVATE);
 
         //Checks to see if the user accepted the disclaimer previously
         if(!proceedResult.contains("acceptedDisclaimer")){
@@ -52,28 +64,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void allergySettingsButton(View view){
-        Intent intent = new Intent(getApplicationContext(), EditAllergies.class);
-        startActivity(intent);
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handles navigation view item clicks
+        int id = item.getItemId();
+
+        if (id == R.id.nav_edit) {
+            Intent intent = new Intent(getApplicationContext(),EditAllergies.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_about) {
+            Intent intent = new Intent(getApplicationContext(),Info.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_share) {
+            //TODO:do something with this
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void scannerButton(View view) {
+        requestCameraPermission();
     }
 
     public void manualSearchButton(View view){
         Intent intent = new Intent(getApplicationContext(),ManualSearch.class);
         startActivity(intent);
     }
-
-    public void infoButton(View view){
-        Intent intent = new Intent(getApplicationContext(),Info.class);
-        startActivity(intent);
-    }
-    public void scannerButton(View view) {
-        requestCameraPermission();
-    }
-
     public void requestCameraPermission() {
-        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(MainView.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, 0);
+            ActivityCompat.requestPermissions(MainView.this, new String[]{Manifest.permission.CAMERA}, 0);
 
         } else {
             //Permission has already been granted
@@ -122,5 +144,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    }
+}

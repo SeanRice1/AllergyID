@@ -30,10 +30,7 @@ public class AllergyData {
 
     }
 
-    /**
-     * Create an Allergy array with the info stored
-     * in SharedPreferences/ default info
-     */
+    //TODO: use a map here instead of allergyModel, duh
     public static void createAllergyArray(){
         for(int x = 0; x<names.length;x++){
             allergyArr[x]= new AllergyModel(names[x],values[x]);

@@ -2,6 +2,7 @@ package com.example.sean.allergyID;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,8 @@ public class CustomAdapter extends ArrayAdapter<AllergyModel>{
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.allergy_row, null);
 
+        View rowView = inflater.inflate(R.layout.allergy_row, null);
         CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.checkBox);
         checkBox.setText(resource[position].getName());
         checkBox.setChecked(resource[position].isChecked());
@@ -38,7 +39,7 @@ public class CustomAdapter extends ArrayAdapter<AllergyModel>{
                 AllergyData.sharedPreferencesUpdater(position);
             }
         });
-
         return rowView;
+
     }
 }

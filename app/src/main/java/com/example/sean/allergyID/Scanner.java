@@ -62,7 +62,7 @@ public class Scanner extends Activity {
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
                         Toast.makeText(Scanner.this, "Camera doesnt have permission!", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),MainView.class);
                         startActivity(intent);
 
                     }
