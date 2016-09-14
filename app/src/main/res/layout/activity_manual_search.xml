@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sean.allergyID.ManualSearch"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryInverseDark">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -24,7 +24,8 @@
         android:id="@+id/manualUpc"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:hint="Type the number here" />
+        android:hint="Type the number here"
+        android:textColorHint="@color/secondaryTextColor"/>
 
     <Button
         android:layout_width="wrap_content"
