@@ -10,6 +10,8 @@ public class ManualSearch extends AppCompatActivity {
 
     private EditText upc;
 
+    //TODO: make demo picture (easy)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
