@@ -24,11 +24,8 @@ import android.view.MenuItem;
 public class MainView extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //TODO: AllergyID
-    //TODO: optimize buttom feedback ( style possibly) dont have multiple xml files and vibration
-    //TODO: add ripple animation to buttons (low priority)
-    //TODO: redo app primary colors, customize fonts
-
+    //TODO: optimize buttom feedback ( style possibly)
+    //TODO: customize fonts
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,6 +24,8 @@ public class Scanner extends Activity {
     SurfaceView surfaceView;
 
     //TODO: make scanner overlay
+    //TODO: bug: multiple vibrations when scan confirmed
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
