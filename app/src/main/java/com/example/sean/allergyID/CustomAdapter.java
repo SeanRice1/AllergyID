@@ -25,6 +25,9 @@ public class CustomAdapter extends ArrayAdapter<AllergyModel>{
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        //TODO: can use map for this also
+        //inflates the rows specified by allergy_row, and sets whether they are checked
+        // and their names based on the AllergyModel array
         View rowView = inflater.inflate(R.layout.allergy_row, null);
         CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.checkBox);
         checkBox.setText(resource[position].getName());

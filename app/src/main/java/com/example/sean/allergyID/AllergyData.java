@@ -25,21 +25,31 @@ public class AllergyData {
         createAllergyArray();
 
 
+        //TODO: IMPORTANT - is this needed??
         for (int x = 0; x < names.length; x++)
             allergyArr[x] = new AllergyModel(names[x], values[x]);
 
     }
 
-    //TODO: use a map here instead of allergyModel, duh
+    //TODO: use a map here instead of allergyModel (important)
+    //populates the local allergyArr with the allergies that were stored in
+    //SharedPreferences. This can be done much more efficiently without using the
+    //AllergyModel object, and using a map instead. This is an important fix
     public static void createAllergyArray(){
         for(int x = 0; x<names.length;x++){
             allergyArr[x]= new AllergyModel(names[x],values[x]);
         }
     }
-    public static void sharedPreferencesSetUp() {
-         sharedPreferences = context.getSharedPreferences("com.example.sean.FoodAllergyScanner.AllergyData", Context.MODE_PRIVATE);
 
-        //If shared preferences is empty, set default values
+    //Sets default values for shared preferences if not created yet,
+    //else retrieves the stored values and puts the name of each checked
+    //allergy into the currentlyChecked list.
+    public static void sharedPreferencesSetUp() {
+         sharedPreferences = context.getSharedPreferences(
+                 "com.example.sean.FoodAllergyScanner.AllergyData", Context.MODE_PRIVATE);
+
+        //If shared preferences is empty ( by checking if the first allergy is stored)
+        // , set default values
         if (!sharedPreferences.contains("Cereals")) {
             for (int x = 0; x < 15; x++) {
                 sharedPreferences.edit().putString(names[x], "0").apply();
@@ -56,6 +66,8 @@ public class AllergyData {
         }
     }
 
+    //Called by the CustomAdapter when the user changes one of their allergy
+    //preferences.
     public static void sharedPreferencesUpdater(int position){
         if(values[position]==0) {
             values[position] = 1;
@@ -65,8 +77,10 @@ public class AllergyData {
             values[position] = 0;
             sharedPreferences.edit().putString(names[position],"0").apply();
 
+            //removes the name of the allergy from the currently check list
             while(currentlyChecked.contains(names[position])) {
-                currentlyChecked.remove(names[position]);//TODO: figure out why there are multiple (low priority)
+                //TODO: figure out why there are multiple (low priority)
+                currentlyChecked.remove(names[position]);
                 //inputs for currentlyChecked
             }
 

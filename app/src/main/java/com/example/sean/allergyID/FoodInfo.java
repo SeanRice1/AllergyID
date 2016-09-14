@@ -33,12 +33,13 @@ public class FoodInfo extends Activity {
     public void setUpcCode(String code){
         upcCode = code;
     }
-    public String makeApiRequestUrl(){
+    private String formatApiRequestUrl(){
 
         return "http://api.foodessentials.com/label?u="+ upcCode
                 +"&sid=af520b23-4799-4a54-bc94-488484fa8ac0&appid=demoApp_01&f=json&long=38.6300&lat=90.2000&api_key="+API_KEY;
     }
 
+    //Called by getFoodInfo(), opens a connection with the api and returns the JSON
     class CallApi extends AsyncTask<String,Void,String>{
 
         @Override
@@ -81,7 +82,7 @@ public class FoodInfo extends Activity {
 
         String results=null;
         try {
-            results=call.execute(makeApiRequestUrl()).get();
+            results=call.execute(formatApiRequestUrl()).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,7 +91,9 @@ public class FoodInfo extends Activity {
         }
 
     }
-    public void parseInputJSON(String input){
+
+    //TODO: Ended here on commenting
+    private void parseInputJSON(String input){
 
         try {
             JSONObject obj = new JSONObject(input);

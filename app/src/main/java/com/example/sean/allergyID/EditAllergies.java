@@ -11,6 +11,8 @@ public class EditAllergies extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_allergies);
 
+
+        //Creates a listview and uses the customAdapter to fill it
         ListView lv = (ListView) findViewById(R.id.listView);
 
         CustomAdapter customAdapter = new CustomAdapter(this,R.layout.allergy_row,AllergyData.allergyArr);

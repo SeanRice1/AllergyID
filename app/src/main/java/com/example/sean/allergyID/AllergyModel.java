@@ -3,6 +3,8 @@ package com.example.sean.allergyID;
 
 public class AllergyModel {
 
+    //TODO: can use a map instead of this
+
     private String name;
 
     // 0 = not checked, 1 = checked
