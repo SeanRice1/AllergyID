@@ -60,6 +60,7 @@
             android:name=".SplashScreen"
             android:theme="@style/DarkTheme"></activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainView"
             android:label="AllergyID"
             android:theme="@style/AppTheme.NoActionBar">
