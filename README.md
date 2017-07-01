@@ -17,8 +17,4 @@ This will be on the Google Play Store soon, so look for it there!
 :rocket:
 
 ## Pictures
-<img src="https://cloud.githubusercontent.com/assets/20408527/21628179/6fcd8a9c-d1eb-11e6-8b18-b5badc260492.png" width = "250">
-<img src="https://cloud.githubusercontent.com/assets/20408527/21628181/749a78b4-d1eb-11e6-98f4-2e940e76b755.png" width = "250">
-<img src="https://cloud.githubusercontent.com/assets/20408527/21628184/771714da-d1eb-11e6-960f-60d12fb555db.png" width = "250">
-<img src="https://cloud.githubusercontent.com/assets/20408527/21628185/7cd9a32e-d1eb-11e6-8065-1ff965b653ea.png" width = "250">
-<img src="https://cloud.githubusercontent.com/assets/20408527/21628187/7f146070-d1eb-11e6-8070-c5ae002174e2.png" width = "250">
+<img src="https://cloud.githubusercontent.com/assets/20408527/21628179/6fcd8a9c-d1eb-11e6-8b18-b5badc260492.png" width = "250"> <img src="https://cloud.githubusercontent.com/assets/20408527/21628181/749a78b4-d1eb-11e6-98f4-2e940e76b755.png" width = "250"> <img src="https://cloud.githubusercontent.com/assets/20408527/21628184/771714da-d1eb-11e6-960f-60d12fb555db.png" width = "250"> <img src="https://cloud.githubusercontent.com/assets/20408527/21628185/7cd9a32e-d1eb-11e6-8065-1ff965b653ea.png" width = "250"> <img src="https://cloud.githubusercontent.com/assets/20408527/21628187/7f146070-d1eb-11e6-8070-c5ae002174e2.png" width = "250">
