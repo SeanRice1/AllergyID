@@ -39,11 +39,6 @@ public class CustomAdapter extends ArrayAdapter<String>{
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AllergyData.allergyMap.get(AllergyData.allergyNames[position]) == 1)
-                    AllergyData.allergyMap.put(AllergyData.allergyNames[position], 0);
-                else
-                    AllergyData.allergyMap.put(AllergyData.allergyNames[position], 1);
-
                 AllergyData.sharedPreferencesUpdater(position);
             }
         });

@@ -16,7 +16,6 @@ public class AllergyData {
     public static final String[] allergyNames = {"Cereals", "Coconut", "Corn", "Egg", "Fish",
             "Gluten", "Lactose", "Milk", "Peanuts", "Sesame seeds", "Shellfish", "Soybean"
             , "Sulfites", "Tree Nuts", "Wheat"};
-    public static ArrayList<String> currentlyChecked= new ArrayList<>();
 
     public static void createArr(Context contextInput) {
         context = contextInput;
@@ -45,8 +44,6 @@ public class AllergyData {
                 int storedVal = Integer.parseInt(sharedPreferences.getString(allergyNames[x],"0"));
                 allergyMap.put(allergyNames[x], storedVal);
 
-                if (Integer.parseInt(sharedPreferences.getString(allergyNames[x],"0"))==1)
-                    currentlyChecked.add(allergyNames[x]);
             }
         }
     }
@@ -62,14 +59,6 @@ public class AllergyData {
             allergyMap.put(allergyNames[position],0);
             sharedPreferences.edit().putString(allergyNames[position],"0").apply();
 
-            //removes the name of the allergy from the currently check list
-            while(currentlyChecked.contains(allergyNames[position])) {
-                //TODO: figure out why there are multiple (low priority)
-                currentlyChecked.remove(allergyNames[position]);
-                //inputs for currentlyChecked
             }
-
         }
-
-    }
 }

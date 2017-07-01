@@ -88,7 +88,7 @@ public class Result extends AppCompatActivity {
             headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
         }
         else if (foodInfo.noInternet()){
-            title.setText("Please connect to the internet");
+            title.setText("Something went wrong with the api");
             resultsLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
             headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
         }
