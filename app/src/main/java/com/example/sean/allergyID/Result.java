@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Result extends AppCompatActivity {
-//TODO: get better result icons
+    //TODO: get better result icons
     //TODO:creating two intents to this activity??
     TextView result1;
     TextView result2;

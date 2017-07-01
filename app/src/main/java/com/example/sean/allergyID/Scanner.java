@@ -30,13 +30,10 @@ public class Scanner extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
-
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-
-            createScanner();
+        createScanner();
     }
     private void createScanner() {
-
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.UPC_E)
                 .setBarcodeFormats(Barcode.UPC_A)
@@ -58,15 +55,11 @@ public class Scanner extends Activity {
 
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
-
-
                 try {
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
                         Toast.makeText(Scanner.this, "Camera doesnt have permission!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(),MainView.class);
                         startActivity(intent);
-
                     }
                     cameraSource.start(surfaceView.getHolder());
 
