@@ -22,9 +22,8 @@ import java.io.IOException;
 public class Scanner extends Activity {
 
     SurfaceView surfaceView;
-
+    boolean sent = false;
     //TODO: make scanner overlay
-    //TODO: bug: multiple vibrations when scan confirmed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,6 @@ public class Scanner extends Activity {
                         startActivity(intent);
                     }
                     cameraSource.start(surfaceView.getHolder());
-
                 }
                 catch (IOException e){
                     e.printStackTrace();
@@ -90,13 +88,13 @@ public class Scanner extends Activity {
 
                 SparseArray<Barcode> resultingBarcodes = detections.getDetectedItems();
 
-                    if (resultingBarcodes.size() > 0) {
+                    if ((resultingBarcodes.size() >  0) && sent == false) {
                        Intent intent = new Intent(getApplicationContext(), Result.class);
                         intent.putExtra("UPC", resultingBarcodes.valueAt(0).displayValue);
                         startActivity(intent);
                         finish();
+                        sent = true;
                     }
-
             }
         });
     }

@@ -17,6 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 
 public class FoodInfo extends Activity {
@@ -119,19 +120,16 @@ public class FoodInfo extends Activity {
 
     }
 
-    public  String containsYourAllergen(){
+    public String containsYourAllergen(){
         //TODO:Make more efficient
         String result="";
-        HashSet<String> results = new HashSet<>();
+        Set<String> results = new HashSet<>();
 
         for(String a: listOfPresentAllergens) {
             Log.i("listofpresent", a);
-            for (String b : AllergyData.currentlyChecked) {
-                Log.i("currentlyChecked", b);
-                if (a.equals(b)) {
+            if(AllergyData.allergyMap.containsKey(a))
+                if(AllergyData.allergyMap.get(a) == 1)
                     results.add(a);
-                }
-            }
         }
 
         result = results.toString();
@@ -139,16 +137,15 @@ public class FoodInfo extends Activity {
         result=result.replace("]","");
         return result;
     }
-    public  String mayContainYourAllergen(){
+    public String mayContainYourAllergen(){
         //TODO:Make more efficient
         String result ="";
-        HashSet<String> results = new HashSet<>();
+        Set<String> results = new HashSet<>();
 
         for(String a: listOfPossibleAllergens){
-            for( String b: AllergyData.currentlyChecked){
-                if(a.equals(b))
+            if(AllergyData.allergyMap.containsKey(a))
+                if(AllergyData.allergyMap.get(a) == 1)
                     results.add(a);
-            }
         }
 
     result = results.toString();
