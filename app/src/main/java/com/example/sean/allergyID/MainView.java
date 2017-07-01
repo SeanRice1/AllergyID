@@ -97,8 +97,18 @@ public class MainView extends AppCompatActivity
         }
     }
     public void manualSearchButton(View view){
-        Intent intent = new Intent(getApplicationContext(),ManualSearch.class);
-        startActivity(intent);
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            Intent intent = new Intent(getApplicationContext(),ManualSearch.class);
+            startActivity(intent);
+        }
+        else{
+            new AlertDialog.Builder(this)
+                    .setTitle("Internet Connection needed")
+                    .setMessage("Internet connection is needed to properly use this app ")
+                    .setCancelable(true).show();
+        }
     }
     public void requestCameraPermission() {
         if (ActivityCompat.checkSelfPermission(MainView.this,
