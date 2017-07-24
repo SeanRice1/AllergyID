@@ -27,7 +27,7 @@ import android.view.MenuItem;
 public class MainView extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //TODO: optimize buttom feedback ( style possibly)
+    //TODO: optimize buttom feedback (style possibly)
     //TODO: customize fonts
 
     @Override
@@ -143,10 +143,10 @@ public class MainView extends AppCompatActivity
                             .setMessage("You need to grant access for the camera in order to use the " +
                                     "product scanner")
                             .setCancelable(false)
-                            .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    requestCameraPermission();
+                                    dialog.cancel();
                                 }
                             }).show();
                 }

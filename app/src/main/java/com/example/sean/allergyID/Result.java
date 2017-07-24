@@ -57,7 +57,7 @@ public class Result extends AppCompatActivity {
             title.setText(foodInfo.getProductName());
 
             if(foodInfo.containsYourAllergen().isEmpty() && foodInfo.mayContainYourAllergen().isEmpty()){
-                String text2 = foodInfo.getProductName()+ " may be safe";
+                String text2 = "Your product may be safe";
                 result1.setText(text2);
                 result1.animate().alpha(1f).setDuration(1000).start();
                 headerImg.setImageResource(R.drawable.ic_check_black_24dp);
@@ -65,7 +65,7 @@ public class Result extends AppCompatActivity {
             }
 
             if(!foodInfo.mayContainYourAllergen().isEmpty()) {
-                String text1 = foodInfo.getProductName()+" may contain the following items that you're" +
+                String text1 = "Your product may contain the following items that you're" +
                         " allergic to: " + foodInfo.mayContainYourAllergen();
                 result2.setText(text1);
                 result2.animate().alpha(1f).setDuration(1000).start();
@@ -74,7 +74,7 @@ public class Result extends AppCompatActivity {
             }
 
             if(!foodInfo.containsYourAllergen().isEmpty()) {
-                String text =foodInfo.getProductName()+ " contains the following items that you're" +
+                String text ="Your product contains the following items that you're" +
                         " allergic to: " + foodInfo.containsYourAllergen();
                 result1.setText(text);
                 result1.animate().alpha(1f).setDuration(1000).start();

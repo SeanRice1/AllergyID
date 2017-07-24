@@ -48,8 +48,9 @@ public class FoodInfo extends Activity {
             try {
                 URL url = new URL(requestUrl[0]);
 
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setConnectTimeout(5000); /*TODO: this needs to be tested */
 
-                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
                 StringBuilder builder = new StringBuilder();
@@ -64,10 +65,16 @@ public class FoodInfo extends Activity {
                     }
                 }
 
+                connection.disconnect();
+
                 return builder.toString();
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
+            }
+            catch (java.net.SocketTimeoutException e){
+                noInternet = true;
+                finish();
             }
             catch (IOException e){
                 noInternet = true;
@@ -81,24 +88,22 @@ public class FoodInfo extends Activity {
     public void getFoodInfo(){
         CallApi call = new CallApi();
 
-        String results=null;
+        String results = null;
         try {
-            results=call.execute(formatApiRequestUrl()).get();
+            results = call.execute(formatApiRequestUrl()).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
         if (!noInternet()) {
             parseInputJSON(results);
         }
-
     }
 
-    //TODO: Ended here on commenting
     private void parseInputJSON(String input){
 
         try {
             JSONObject obj = new JSONObject(input);
-
+            System.out.println(obj);
             JSONArray array = obj.getJSONArray("allergens");
 
             for(int x = 0; x<array.length();x++){
@@ -121,7 +126,7 @@ public class FoodInfo extends Activity {
     }
 
     public String containsYourAllergen(){
-        //TODO:Make more efficient
+        //TODO:Figure out why there are multiple entries
         String result="";
         Set<String> results = new HashSet<>();
 
@@ -138,7 +143,7 @@ public class FoodInfo extends Activity {
         return result;
     }
     public String mayContainYourAllergen(){
-        //TODO:Make more efficient
+        //TODO:Figure out why there are multiple entries
         String result ="";
         Set<String> results = new HashSet<>();
 
