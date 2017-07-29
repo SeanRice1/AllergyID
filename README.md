@@ -3,7 +3,7 @@
 This is an android app with an easy-to-understand interface to help alert people of whether the item they have contains something they are allergic to via scanning a UPC barcode. The goal of this project is to help people who may have trouble reading packaging labels such as small children or elderly people.
 
 ## Apk
-Click [here](https://drive.google.com/uc?export=download&id=0B2L9l_EX4hVgOEljOHNQaUtBNjQ) to download the pre-alpha apk. 
+Click [here](https://drive.google.com/uc?export=download&id=0B2L9l_EX4hVga1VHZlVoS3NUT0k) to download the pre-alpha apk. 
 
 **How to install the apk on your android device** 
   1. On your device, go to Settings then Lock Screen and Security
