@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 
-public class CustomAdapter extends ArrayAdapter<AllergyModel>{
+public class CustomAdapter extends ArrayAdapter<String>{
 
-    private AllergyModel[] resource;
     private Context context;
 
-    public CustomAdapter(Context context, int textViewResourceID, AllergyModel[] resource) {
-        super(context, textViewResourceID, resource);
-        this.resource = resource;
+    public CustomAdapter(Context context, int textViewResourceID, String[] allergyNames) {
+        super(context, textViewResourceID, allergyNames);
         this.context = context;
     }
 
@@ -25,20 +23,22 @@ public class CustomAdapter extends ArrayAdapter<AllergyModel>{
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        //TODO: can use map for this also
         //inflates the rows specified by allergy_row, and sets whether they are checked
-        // and their names based on the AllergyModel array
+        //and their names
         View rowView = inflater.inflate(R.layout.allergy_row, null);
         CheckBox checkBox = (CheckBox) rowView.findViewById(R.id.checkBox);
-        checkBox.setText(resource[position].getName());
-        checkBox.setChecked(resource[position].isChecked());
+        checkBox.setText(AllergyData.allergyNames[position]);
+
+        if(AllergyData.allergyMap.get(AllergyData.allergyNames[position]) == 1)
+            checkBox.setChecked(true);
+        else
+            checkBox.setChecked(false);
 
         //When a checkbox is clicked sharedPreferences and
         //AllergyData values array and specific Allergy object
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resource[position].switchedCheckedValue();
                 AllergyData.sharedPreferencesUpdater(position);
             }
         });

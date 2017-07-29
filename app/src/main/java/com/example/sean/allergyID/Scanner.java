@@ -22,21 +22,17 @@ import java.io.IOException;
 public class Scanner extends Activity {
 
     SurfaceView surfaceView;
-
+    boolean sent = false;
     //TODO: make scanner overlay
-    //TODO: bug: multiple vibrations when scan confirmed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
-
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-
-            createScanner();
+        createScanner();
     }
     private void createScanner() {
-
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.UPC_E)
                 .setBarcodeFormats(Barcode.UPC_A)
@@ -44,7 +40,7 @@ public class Scanner extends Activity {
 
         CameraSource.Builder builder = new CameraSource.Builder(this, barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
-                .setRequestedFps(15f)
+                .setRequestedFps(30f)
                 .setRequestedPreviewSize(1600, 1024);
 
         // make sure that auto focus is an available option
@@ -58,18 +54,13 @@ public class Scanner extends Activity {
 
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
-
-
                 try {
                     if (ActivityCompat.checkSelfPermission(Scanner.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
                         Toast.makeText(Scanner.this, "Camera doesnt have permission!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(),MainView.class);
                         startActivity(intent);
-
                     }
                     cameraSource.start(surfaceView.getHolder());
-
                 }
                 catch (IOException e){
                     e.printStackTrace();
@@ -84,6 +75,7 @@ public class Scanner extends Activity {
             @Override
             public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
                 cameraSource.stop();
+                cameraSource.release();
             }
         });
 
@@ -97,13 +89,13 @@ public class Scanner extends Activity {
 
                 SparseArray<Barcode> resultingBarcodes = detections.getDetectedItems();
 
-                    if (resultingBarcodes.size() > 0) {
+                    if ((resultingBarcodes.size() >  0) && sent == false) {
                        Intent intent = new Intent(getApplicationContext(), Result.class);
                         intent.putExtra("UPC", resultingBarcodes.valueAt(0).displayValue);
                         startActivity(intent);
                         finish();
+                        sent = true;
                     }
-
             }
         });
     }
