@@ -40,7 +40,7 @@ public class Scanner extends Activity {
 
         CameraSource.Builder builder = new CameraSource.Builder(this, barcodeDetector)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
-                .setRequestedFps(15f)
+                .setRequestedFps(30f)
                 .setRequestedPreviewSize(1600, 1024);
 
         // make sure that auto focus is an available option
@@ -75,6 +75,7 @@ public class Scanner extends Activity {
             @Override
             public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
                 cameraSource.stop();
+                cameraSource.release();
             }
         });
 
