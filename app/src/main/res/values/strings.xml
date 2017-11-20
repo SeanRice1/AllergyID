@@ -66,5 +66,9 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="EAllergies"><font color="#525252">Edit your allergies</font></string>
+    <string name="share"><font color="#525252">Share</font></string>
+    <string name="abt"><font color="#525252">About</font></string>
+    <string name="comm"><font color="#525252">Communicate</font></string>
+    <string name="settings"><font color="#525252">Settings</font></string>
 </resources>

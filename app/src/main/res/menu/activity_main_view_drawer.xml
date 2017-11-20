@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_edit"
-            android:icon="@drawable/ic_settings_black_36dp"
-            android:title="Edit your allergies" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_info_black_36dp"
-            android:title="About" />
+    <group>
+        <item android:title="@string/settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_edit"
+                    android:icon="@drawable/ic_settings_black_36dp"
+                    android:title="@string/EAllergies"/>
+            </menu>
+        </item>
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-        </menu>
-    </item>
+    <group>
+        <item android:title="@string/comm">
+            <menu>
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/ic_info_black_36dp"
+                    android:title="@string/abt" />
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="@string/share" />
+            </menu>
+        </item>
+    </group>
+
 
 </menu>
