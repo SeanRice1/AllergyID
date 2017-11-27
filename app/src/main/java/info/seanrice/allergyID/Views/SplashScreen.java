@@ -1,5 +1,6 @@
-package com.example.sean.allergyID;
+package info.seanrice.allergyID.Views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,9 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import info.seanrice.allergyID.R;
+
 
 public class SplashScreen extends AppCompatActivity{
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class SplashScreen extends AppCompatActivity{
         splashText.setText(Html.fromHtml(getString(R.string.disclaimer)));
 
         final SharedPreferences proceedResult = getApplicationContext().getSharedPreferences
-                ("com.example.sean.allergyID.SplashScreen",MODE_PRIVATE);
+                ("info.seanrice.allergyID.Views.SplashScreen",MODE_PRIVATE);
 
 
     if(proceedButton != null) {

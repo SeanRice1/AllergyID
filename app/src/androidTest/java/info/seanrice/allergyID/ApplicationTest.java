@@ -1,4 +1,4 @@
-package com.example.sean.allergyID;
+package info.seanrice.allergyID;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

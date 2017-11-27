@@ -1,7 +1,8 @@
-package com.example.sean.allergyID;
+package info.seanrice.allergyID.Views;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -19,11 +20,12 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import info.seanrice.allergyID.R;
+
 public class Scanner extends Activity {
 
     SurfaceView surfaceView;
     boolean sent = false;
-    //TODO: make scanner overlay
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

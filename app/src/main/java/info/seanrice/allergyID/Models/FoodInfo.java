@@ -1,4 +1,4 @@
-package com.example.sean.allergyID;
+package info.seanrice.allergyID.Models;
 
 
 import android.app.Activity;
@@ -19,8 +19,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import info.seanrice.allergyID.AllergyData;
 
-public class FoodInfo extends Activity {
+
+ public class FoodInfo extends Activity {
     //TODO: add more allergies (low priority)
 
     private static final String API_KEY ="2mdxcrznzd43t3wcc75nch7y";
@@ -31,7 +33,7 @@ public class FoodInfo extends Activity {
     private boolean upcNotFound = false;
     private boolean noInternet = false;
 
-    public void setUpcCode(String code){
+    void setUpcCode(String code){
         upcCode = code;
     }
     private String formatApiRequestUrl(){
@@ -85,7 +87,7 @@ public class FoodInfo extends Activity {
             return null;
         }
     }
-    public void getFoodInfo(){
+    void getFoodInfo(){
         CallApi call = new CallApi();
 
         String results = null;
@@ -125,8 +127,7 @@ public class FoodInfo extends Activity {
 
     }
 
-    public String containsYourAllergen(){
-        //TODO:Figure out why there are multiple entries
+    String containsYourAllergen(){
         String result="";
         Set<String> results = new HashSet<>();
 
@@ -142,8 +143,7 @@ public class FoodInfo extends Activity {
         result=result.replace("]","");
         return result;
     }
-    public String mayContainYourAllergen(){
-        //TODO:Figure out why there are multiple entries
+    String mayContainYourAllergen(){
         String result ="";
         Set<String> results = new HashSet<>();
 
@@ -158,13 +158,13 @@ public class FoodInfo extends Activity {
     result=result.replace("]","");
     return result;
     }
-    public boolean upcNotFound (){
+    boolean upcNotFound (){
         return upcNotFound;
     }
-    public boolean noInternet(){
+    boolean noInternet(){
         return noInternet;
     }
-    public String getProductName(){
+    String getProductName(){
         return productName;
     }
 }

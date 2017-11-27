@@ -1,16 +1,18 @@
-package com.example.sean.allergyID;
+package info.seanrice.allergyID.Views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import info.seanrice.allergyID.R;
+import info.seanrice.allergyID.Views.Result;
+
 public class ManualSearch extends AppCompatActivity {
 
     private EditText upc;
-
-    //TODO: make demo picture (easy)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

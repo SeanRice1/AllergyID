@@ -1,4 +1,4 @@
-package com.example.sean.allergyID;
+package info.seanrice.allergyID.Views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import info.seanrice.allergyID.FoodInfo;
+import info.seanrice.allergyID.R;
 
 public class Result extends AppCompatActivity {
     //TODO: get better result icons
@@ -42,7 +45,7 @@ public class Result extends AppCompatActivity {
         setText();
     }
 
-    public void getFoodInfo(){
+    private void getFoodInfo(){
         Intent intent = getIntent();
         foodInfo = new FoodInfo();
         Log.i("UPC","The UPC code is: " + intent.getStringExtra("UPC"));
@@ -51,7 +54,7 @@ public class Result extends AppCompatActivity {
 
     }
 
-    public void setText(){
+    private void setText(){
         if(!foodInfo.upcNotFound() && !foodInfo.noInternet()) {
 
             title.setText(foodInfo.getProductName());
@@ -83,12 +86,12 @@ public class Result extends AppCompatActivity {
             }
         }
         else if(!foodInfo.noInternet()){
-            title.setText("Product not found");
+            title.setText(R.string.productNotFound);
             resultsLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
             headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
         }
         else if (foodInfo.noInternet()){
-            title.setText("Something went wrong with the api");
+            title.setText(R.string.sorry);
             resultsLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
             headerImg.setImageResource(R.drawable.ic_sentiment_dissatisfied_black_36dp);
         }
