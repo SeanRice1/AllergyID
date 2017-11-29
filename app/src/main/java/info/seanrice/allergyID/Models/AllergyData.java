@@ -1,14 +1,17 @@
 package info.seanrice.allergyID.Models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import info.seanrice.allergyID.Data.LocalDataI;
 
-public class AllergyData {
+public class AllergyData implements AllergyDataI{
 
     private LocalDataI prefs;
 
-    private HashMap<String, Integer> allergyMap = new HashMap<>(15);
+    private HashMap<String, Boolean> allergyMap = new HashMap<>(15);
     private final String[] ALLERGY_NAMES = {"Cereals", "Coconut", "Corn", "Egg", "Fish",
             "Gluten", "Lactose", "Milk", "Peanuts", "Sesame seeds", "Shellfish", "Soybean"
             , "Sulfites", "Tree Nuts", "Wheat"};
@@ -17,7 +20,7 @@ public class AllergyData {
     public AllergyData(LocalDataI prefs){
         this.prefs = prefs;
         for(int i = 0; i<15; i++){
-            allergyMap.put(ALLERGY_NAMES[i], 0);
+            allergyMap.put(ALLERGY_NAMES[i], false);
         }
         sharedPreferencesSetUp();
     }
@@ -35,7 +38,10 @@ public class AllergyData {
                 //else get stored values
                 for (int x = 0; x < ALLERGY_NAMES.length; x++) {
                     int storedVal = Integer.parseInt(prefs.getStrVal(ALLERGY_NAMES[x]));
-                    allergyMap.put(ALLERGY_NAMES[x], storedVal);
+                    if(storedVal == 0)
+                        allergyMap.put(ALLERGY_NAMES[x], false);
+                    else
+                        allergyMap.put(ALLERGY_NAMES[x], true);
                 }
         }
     }
@@ -44,24 +50,33 @@ public class AllergyData {
     //preferences.
     public void sharedPreferencesUpdater(String allergyName){
 
-        if(allergyMap.get(allergyName)==0) {
-            allergyMap.put(allergyName,1);
+        if(!allergyMap.get(allergyName)) {
+            allergyMap.put(allergyName,true);
             prefs.addStrKeyVal(allergyName,"1");
         }
         else {
-            allergyMap.put(allergyName,0);
+            allergyMap.put(allergyName,false);
             prefs.addStrKeyVal(allergyName,"0");
 
             }
         }
 
+    @Override
+    public ArrayList<String> getAllergies() {
+        ArrayList<String> result = new ArrayList<>();
+        Set<Map.Entry<String, Boolean>> set = allergyMap.entrySet();
+        for(Map.Entry<String, Boolean> entry: set){
+            if(entry.getValue())
+                result.add(entry.getKey());
+        }
+
+        return result;
+    }
+
     public String[] getAllergyNames(){
          return ALLERGY_NAMES;
     }
     public boolean isChecked(String key){
-        if(allergyMap.get(key) == 0)
-            return false;
-        else
-            return true;
+        return allergyMap.get(key);
     }
 }
